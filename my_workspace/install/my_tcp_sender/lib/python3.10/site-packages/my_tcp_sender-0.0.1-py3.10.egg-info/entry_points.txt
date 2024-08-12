@@ -1,0 +1,2 @@
+[console_scripts]
+tcp_sender_node = my_tcp_sender.tcp_sender_node:main

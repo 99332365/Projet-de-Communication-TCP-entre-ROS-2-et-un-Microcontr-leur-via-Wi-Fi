@@ -1,0 +1,8 @@
+Metadata-Version: 2.1
+Name: my_tcp_sender
+Version: 0.0.1
+Summary: A ROS 2 package to send messages via TCP
+Maintainer: samar
+Maintainer-email: samarr@example.com
+License: License Type
+Requires-Dist: setuptools
