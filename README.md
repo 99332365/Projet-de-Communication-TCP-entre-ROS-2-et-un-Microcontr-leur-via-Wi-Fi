@@ -111,5 +111,5 @@ Le serveur TCP fonctionne sur le microcontrôleur et écoute les connexions des 
     Écoute TCP : Une fois connecté au réseau, il attend les connexions sur un port (1234) et affiche les messages reçus.
     Réponse : Après avoir reçu un message, il renvoie un accusé de réception au client.
 
-Auteurs
+Auteur
 Samar Rezgui
