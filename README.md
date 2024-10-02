@@ -87,16 +87,26 @@ Client TCP (ROS 2)
 Le client TCP est implémenté comme un nœud ROS 2. Voici les points clés :
 
 Bibliothèque utilisée : rclpy pour créer le nœud ROS 2 et socket pour établir une connexion TCP.
+
 Périodicité : Le client envoie des messages toutes les 5 secondes grâce à un timer ROS 2.
+
+
 Fonctionnement :
 Le client tente de se connecter au serveur TCP avec l'adresse IP et le port spécifiés.
 Si la connexion est réussie, un message est envoyé périodiquement au serveur.
 Serveur TCP (microcontrôleur)
+
 Le serveur TCP fonctionne sur le microcontrôleur et écoute les connexions des clients.
 
 Connexion Wi-Fi : Le script connecte d'abord le microcontrôleur à un réseau Wi-Fi.
+
 Écoute TCP : Une fois connecté au réseau, il attend les connexions sur un port (1234) et affiche les messages reçus.
+
 Réponse : Après avoir reçu un message, il renvoie un accusé de réception au client.
+
+
+
+
 Auteur
 Samar Rezgui
 GitHub : 99332365
