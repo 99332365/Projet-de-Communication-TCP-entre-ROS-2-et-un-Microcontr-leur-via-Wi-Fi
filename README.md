@@ -11,7 +11,7 @@ Le projet consiste à mettre en place une communication via le protocole TCP ent
 
 ## Prérequis
 
-- Un ordinateur avec ROS 2 installé (la version utilisée dépend de votre configuration, par exemple, ROS 2 iron.).
+- Un ordinateur avec ROS 2 installé (la version utilisée dépend de votre configuration, par exemple, ROS 2 Iron).
 - Un microcontrôleur avec un module Wi-Fi (par exemple, FiPy).
 - Une connexion Wi-Fi stable pour que les deux appareils puissent communiquer.
 - Python installé sur l'ordinateur.
@@ -74,39 +74,38 @@ Le projet consiste à mettre en place une communication via le protocole TCP ent
 
 ## Structure du Projet
 
-tcp_sender_node.py (client ROS 2) :
+- **tcp_sender_node.py (client ROS 2)** :
+    - Ce script initialise un nœud ROS 2 nommé `tcp_sender_node`.
+    - Il configure un client TCP pour se connecter à un serveur distant (le microcontrôleur) et envoie un message toutes les 5 secondes.
+    
+- **server.py (serveur sur le microcontrôleur)** :
+    - Ce script configure un serveur TCP qui écoute sur l'adresse IP du microcontrôleur et un port spécifique (1234).
+    - Il attend des connexions entrantes, affiche les messages reçus et répond par une confirmation.
 
-Ce script initialise un nœud ROS 2 nommé tcp_sender_node.
-Il configure un client TCP pour se connecter à un serveur distant (le microcontrôleur) et envoie un message toutes les 5 secondes.
-server.py (serveur sur le microcontrôleur) :
+## Détails Techniques
 
-Ce script configure un serveur TCP qui écoute sur l'adresse IP du microcontrôleur et un port spécifique (1234).
-Il attend des connexions entrantes, affiche les messages reçus et répond par une confirmation.
-Détails Techniques
-Client TCP (ROS 2)
+### Client TCP (ROS 2)
+
 Le client TCP est implémenté comme un nœud ROS 2. Voici les points clés :
 
-Bibliothèque utilisée : rclpy pour créer le nœud ROS 2 et socket pour établir une connexion TCP.
+- **Bibliothèque utilisée** : `rclpy` pour créer le nœud ROS 2 et `socket` pour établir une connexion TCP.
+- **Périodicité** : Le client envoie des messages toutes les 5 secondes grâce à un timer ROS 2.
 
-Périodicité : Le client envoie des messages toutes les 5 secondes grâce à un timer ROS 2.
+#### Fonctionnement :
 
+- Le client tente de se connecter au serveur TCP avec l'adresse IP et le port spécifiés.
+- Si la connexion est réussie, un message est envoyé périodiquement au serveur.
 
-Fonctionnement :
-Le client tente de se connecter au serveur TCP avec l'adresse IP et le port spécifiés.
-Si la connexion est réussie, un message est envoyé périodiquement au serveur.
-Serveur TCP (microcontrôleur)
+### Serveur TCP (microcontrôleur)
 
 Le serveur TCP fonctionne sur le microcontrôleur et écoute les connexions des clients.
 
-Connexion Wi-Fi : Le script connecte d'abord le microcontrôleur à un réseau Wi-Fi.
+- **Connexion Wi-Fi** : Le script connecte d'abord le microcontrôleur à un réseau Wi-Fi.
+- **Écoute TCP** : Une fois connecté au réseau, il attend les connexions sur un port (1234) et affiche les messages reçus.
+- **Réponse** : Après avoir reçu un message, il renvoie un accusé de réception au client.
 
-Écoute TCP : Une fois connecté au réseau, il attend les connexions sur un port (1234) et affiche les messages reçus.
+## Auteur
 
-Réponse : Après avoir reçu un message, il renvoie un accusé de réception au client.
+Samar Rezgui  
+GitHub : [99332365](https://github.com/99332365)
 
-
-
-
-Auteur
-Samar Rezgui
-GitHub : 99332365
